@@ -215,6 +215,29 @@
             margin-bottom: 20px;
         }
 
+        .info {
+            background: rgba(59, 130, 246, 0.1);
+            border: 1px solid #3b82f6;
+            color: #3b82f6;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            font-size: 14px;
+            line-height: 1.6;
+        }
+
+        .info strong {
+            color: #60a5fa;
+        }
+
+        .info code {
+            background: rgba(59, 130, 246, 0.2);
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-family: 'Monaco', 'Courier New', monospace;
+            font-size: 13px;
+        }
+
         .refresh-btn {
             background: #f59e0b;
             color: #0a0e17;
@@ -281,7 +304,12 @@
     </div>
 
     <script>
-        const GATEWAY_URL = 'http://192.168.100.18:18789';
+        // Auto-detect: Use local gateway if on same network, otherwise show instructions
+        const isLocalNetwork = window.location.hostname === 'localhost' || 
+                               window.location.hostname === '192.168.100.18' ||
+                               window.location.protocol === 'file:';
+        
+        const GATEWAY_URL = isLocalNetwork ? 'http://192.168.100.18:18789' : null;
         const GATEWAY_TOKEN = 'b4d3a4a9d4a022886922fae7ac3e979a4bbff7fcc744b947';
 
         const AGENT_DEFINITIONS = [
@@ -305,6 +333,10 @@
         ];
 
         async function fetchSessions() {
+            if (!GATEWAY_URL) {
+                throw new Error('Gateway not accessible from public internet. Please use local network access: http://192.168.100.18:8080');
+            }
+            
             const response = await fetch(`${GATEWAY_URL}/api/sessions/list`, {
                 method: 'POST',
                 headers: {
@@ -414,11 +446,27 @@
                 
             } catch (error) {
                 console.error('Error loading data:', error);
-                errorContainer.innerHTML = `
-                    <div class="error">
-                        ⚠️ Failed to load data: ${error.message}
-                    </div>
-                `;
+                
+                if (!GATEWAY_URL) {
+                    errorContainer.innerHTML = `
+                        <div class="info">
+                            📡 <strong>Network Access Required</strong><br><br>
+                            Mission Control needs to connect to the Gateway API on your local network.<br><br>
+                            <strong>To use this dashboard:</strong><br>
+                            1️⃣ Connect to the same WiFi as your Mac Mini (192.168.100.x network)<br>
+                            2️⃣ Open: <code>http://192.168.100.18:8080</code><br>
+                            3️⃣ Add to Home Screen from there<br><br>
+                            Or use the local server on your Mac.
+                        </div>
+                    `;
+                } else {
+                    errorContainer.innerHTML = `
+                        <div class="error">
+                            ⚠️ Failed to load data: ${error.message}<br><br>
+                            Make sure you're connected to the same network as the Gateway (192.168.100.x)
+                        </div>
+                    `;
+                }
             }
         }
 
