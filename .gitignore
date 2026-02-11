@@ -1,0 +1,7 @@
+# Scripts for local icon generation
+generate-icons.js
+generate-icons.py
+
+# Development files
+.DS_Store
+*.log
