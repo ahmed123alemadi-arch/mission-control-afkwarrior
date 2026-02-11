@@ -12,7 +12,15 @@ Real-time monitoring for AFKwarrior squad.
 
 ## Access
 
-### Option 1: Direct File (Simplest)
+### Option 1: GitHub Pages (Recommended - HTTPS + PWA Support)
+```
+https://ahmed123alemadi-arch.github.io/mission-control-afkwarrior/
+```
+✅ Works from anywhere  
+✅ HTTPS enabled  
+✅ PWA install works perfectly on iOS  
+
+### Option 2: Direct File (Local Only)
 ```bash
 open /Users/ahmedalemadi/.openclaw/workspace/mission-control/index.html
 ```
@@ -33,21 +41,21 @@ http://192.168.100.18:8080
 ## Install as PWA (Mobile App)
 
 ### iPhone/iPad:
-1. Open `http://192.168.100.18:8080` in Safari
+1. Open `https://ahmed123alemadi-arch.github.io/mission-control-afkwarrior/` in Safari
 2. Tap the Share button (square with arrow)
 3. Scroll down and tap "Add to Home Screen"
 4. Tap "Add"
 5. ✅ Mission Control now works like a native app!
 
 ### Android:
-1. Open `http://192.168.100.18:8080` in Chrome
+1. Open `https://ahmed123alemadi-arch.github.io/mission-control-afkwarrior/` in Chrome
 2. Tap the menu (three dots)
 3. Tap "Add to Home Screen" or "Install App"
 4. Tap "Add"
 5. ✅ Mission Control now works like a native app!
 
 ### Desktop (Chrome/Edge):
-1. Open `http://192.168.100.18:8080`
+1. Open `https://ahmed123alemadi-arch.github.io/mission-control-afkwarrior/`
 2. Click the install icon in the address bar (⊕ or computer icon)
 3. Click "Install"
 4. ✅ Mission Control now runs as a desktop app!
