@@ -1,7 +1,7 @@
 const CACHE_NAME = 'mission-control-v1';
 const urlsToCache = [
-  '/',
-  '/index.html'
+  './',
+  'index.html'
 ];
 
 self.addEventListener('install', event => {

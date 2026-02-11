@@ -2,7 +2,7 @@
   "name": "Mission Control - AFKwarrior",
   "short_name": "Mission Control",
   "description": "Real-time monitoring for AFKwarrior squad",
-  "start_url": "/",
+  "start_url": "/mission-control-afkwarrior/",
   "display": "standalone",
   "background_color": "#0a0e17",
   "theme_color": "#f59e0b",
